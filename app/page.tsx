@@ -12,14 +12,22 @@ const blogQuery = groq`
   } | order(publishedAt desc)
 `;
 
+interface Post {
+  _id: string;
+  title: string;
+  slug: string;
+  publishedAt: string;
+  body: string;
+}
+
 export default async function Home() {
   const response = await client.fetch(blogQuery);
   const posts = response;
 
   return (
-<div className="bg-background text-foreground" >
+<div className="bg-background text-foreground">
       blog
-      {posts.map((post: any) => (
+      {posts.map((post: Post) => (
         <div key={post._id}>
           <h2>{post.title}</h2>
           <div>{post.publishedAt}</div>
