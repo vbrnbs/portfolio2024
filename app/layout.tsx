@@ -2,14 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { ThemeProvider } from "@/components/theme-provider"
 import "./globals.css";
-import { Fraunces } from "next/font/google";
 import Header from "@/components/Header";
-
-const fraunces = Fraunces({ 
-  subsets: ["latin"], 
-  weight: "400",
-  // variable: "--font-fraunces" 
-});
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
