@@ -1,5 +1,6 @@
 import { client } from '../sanity/lib/client';
 import { groq } from 'next-sanity';
+import { Button } from "@/components/ui/button"
 
 const blogQuery = groq`
   *[_type == "post"]{
@@ -16,8 +17,10 @@ export default async function Home() {
   const posts = response;
 
   return (
-    <div className='text-white'>
+<div className="bg-background text-foreground" >
+
       blog
+      
       {posts.map((post: any) => (
         <div key={post._id}>
           <h2>{post.title}</h2>
@@ -25,6 +28,8 @@ export default async function Home() {
           {/* <p>{post.body}</p> */}
         </div>
       ))}
+      <Button variant="outline">Click me</Button>
     </div>
   );
 }
+
