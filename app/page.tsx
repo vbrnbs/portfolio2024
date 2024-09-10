@@ -18,9 +18,7 @@ export default async function Home() {
 
   return (
 <div className="bg-background text-foreground" >
-
       blog
-      
       {posts.map((post: any) => (
         <div key={post._id}>
           <h2>{post.title}</h2>
