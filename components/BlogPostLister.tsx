@@ -1,6 +1,5 @@
 import { client } from '../sanity/lib/client';
 import { groq } from 'next-sanity';
-import { Button } from "@/components/ui/button"
 import { Post } from '../lib/interfaces';
 import BlogPostPreview from '@/components/BlogPostPreview';
 

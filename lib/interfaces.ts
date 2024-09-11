@@ -1,3 +1,5 @@
+import { SchemaTypeDefinition } from 'sanity';
+// import { blockContentType } from '../sanity/schemaTypes/blockContentType';
 export interface Post {
     _id: string;
     title: string;
@@ -16,7 +18,7 @@ export interface Post {
       _ref: string;
     }[];
     publishedAt?: string;
-    body: any; // Assuming 'blockContent' is a custom type, replace 'any' with the actual type if available
+    body: SchemaTypeDefinition; // Assuming 'blockContent' is a custom type, replace 'any' with the actual type if available
     author: {
       _type: 'reference';
       _ref: string;

@@ -1,3 +1,5 @@
+import { SchemaTypeDefinition } from "sanity";
+
 export type BlogPost = {
   _id: string;
   title: string;
@@ -16,7 +18,7 @@ export type BlogPost = {
     _ref: string;
   }[];
   publishedAt?: string;
-  body: any; // assuming 'blockContent' is a custom type, replace with a more specific type if available
+  body: SchemaTypeDefinition; // assuming 'blockContent' is a custom type, replace with a more specific type if available
   author: {
     _type: 'reference';
     _ref: string;
