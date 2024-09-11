@@ -18,11 +18,7 @@ export const postType = defineType({
         source: 'title',
       },
     }),
-    defineField({
-      name: 'author',
-      type: 'reference',
-      to: {type: 'author'},
-    }),
+    
     defineField({
       name: 'mainImage',
       type: 'image',
@@ -49,6 +45,11 @@ export const postType = defineType({
     defineField({
       name: 'body',
       type: 'blockContent',
+    }),
+    defineField({
+      name: 'author',
+      type: 'reference',
+      to: {type: 'author'},
     }),
   ],
   preview: {
