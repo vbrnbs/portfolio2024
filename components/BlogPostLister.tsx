@@ -74,13 +74,13 @@ export default async function BlogPostLister() {
     return (
   <div className="bg-background text-foreground"> 
       <ExpandableCard cards={cards}/>
-        {/* {posts.map((post: Post) => (
+        {posts.map((post: Post) => (
           <>
             <BlogPostPreview key={post._id} post={post} />
             
           </>
           
-        ))} */}
+        ))}
       </div>
     );
   }
