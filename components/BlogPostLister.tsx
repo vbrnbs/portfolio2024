@@ -2,6 +2,7 @@ import { client } from '../sanity/lib/client';
 import { groq } from 'next-sanity';
 import { Post } from '../lib/interfaces';
 import BlogPostPreview from '@/components/BlogPostPreview';
+import { ExpandableCard } from './ui/ExpandableCard';
 
 
 const blogQuery = groq`
@@ -23,7 +24,11 @@ export default async function BlogPostLister() {
     return (
   <div className="bg-background text-foreground"> 
         {posts.map((post: Post) => (
-          <BlogPostPreview key={post._id} post={post} />
+          <>
+            <BlogPostPreview key={post._id} post={post} />
+            <ExpandableCard key={post._id} image={post.mainImage}/>
+          </>
+          
         ))}
       </div>
     );
