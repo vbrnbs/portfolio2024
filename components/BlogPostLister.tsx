@@ -26,7 +26,7 @@ export default async function BlogPostLister() {
         {posts.map((post: Post) => (
           <>
             <BlogPostPreview key={post._id} post={post} />
-            <ExpandableCard key={post._id} image={post.mainImage}/>
+            <ExpandableCard key={post._id} />
           </>
           
         ))}
