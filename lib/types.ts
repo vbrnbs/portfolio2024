@@ -19,10 +19,10 @@ export type BlogPost = {
   }[];
   publishedAt?: string;
   body: SchemaTypeDefinition; // assuming 'blockContent' is a custom type, replace with a more specific type if available
-  author: {
-    _type: 'reference';
-    _ref: string;
-  };
+  // author: {
+  //   _type: 'reference';
+  //   _ref: string;
+  // };
 };
 
   
