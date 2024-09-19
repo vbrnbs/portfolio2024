@@ -3,7 +3,7 @@ import Image from "next/image";
 import React, { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useOutsideClick } from "@/hooks/use-outside-clicks";
-import { PortableText } from "next-sanity";
+// import { PortableText } from "next-sanity";
 
 export function ExpandableCard({ cards }: { cards: any[] }) {
   const [active, setActive] = useState<(typeof cards)[number] | boolean | null>(

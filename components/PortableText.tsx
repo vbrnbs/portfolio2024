@@ -17,9 +17,10 @@ const components: PortableTextReactComponents = {
     }
   },
   marks: {
+
     link: ({ children, value }: { children: any; value?: any }) => {
       const href = value?.href || '#'; // Use a default or fallback value if `value` is undefined
-      return <a href={href} target="_blank" rel="noopener noreferrer">{children}</a>;
+      return <Link href={href} target="_blank" rel="noopener noreferrer">{children}</Link>;
     }
   },
   unknownMark: ({ children }) => <span>{children}</span>,
