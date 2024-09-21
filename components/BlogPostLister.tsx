@@ -25,7 +25,7 @@ export default async function BlogPostLister() {
   };
   const components = {
     types: {
-      image: ({ value }: { value: any }) => <ImageComponent value={value} />,
+      image: ({ value }: { value: string }) => <ImageComponent value={value} />,
     },
   };
 
@@ -38,7 +38,8 @@ export default async function BlogPostLister() {
     ctaLink: `/posts/${post.slug.current}`,
     content: <PortableText value={post.body} components={components}/>//components={components} /> // Render the content here as JSX
   }));
-  console.log(posts[0].body);
+
+  // console.log(posts[0].body);
 
   return (
     <div className="bg-background text-foreground">

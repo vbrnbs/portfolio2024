@@ -5,7 +5,16 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useOutsideClick } from "@/hooks/use-outside-clicks";
 // import { PortableText } from "next-sanity";
 
-export function ExpandableCard({ cards }: { cards: any[] }) {
+interface Card {
+  description: string;
+  title: string;
+  src: string;
+  ctaText: string;
+  ctaLink: string;
+  content: JSX.Element;
+}
+
+export function ExpandableCard({ cards }: { cards: Card[] }) {
   const [active, setActive] = useState<(typeof cards)[number] | boolean | null>(
     null
   );
@@ -120,9 +129,7 @@ export function ExpandableCard({ cards }: { cards: any[] }) {
                     exit={{ opacity: 0 }}
                     className="text-neutral-600 text-xs md:text-sm lg:text-base h-40 md:h-fit pb-10 flex flex-col items-start gap-4 overflow-auto dark:text-neutral-400 [mask:linear-gradient(to_bottom,white,white,transparent)] [scrollbar-width:none] [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch]"
                   >
-                    {typeof active.content === "function"
-                      ? active.content()
-                      : active.content}
+                    {active.content}
                   </motion.div>
                 </div>
               </div>
