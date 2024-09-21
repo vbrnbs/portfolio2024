@@ -6,6 +6,7 @@ interface RichTextProps {
   value: PortableTextBlock[]; // or other custom blocks/types you may be using
 }
 
+
 const components: PortableTextReactComponents = {
   block: ({ children }) => <p>{children}</p>,
   list: ({ children }) => <ul>{children}</ul>,
@@ -13,7 +14,7 @@ const components: PortableTextReactComponents = {
   hardBreak: () => <br />,
   types: {
     image: ({ value }: { value: any }) => {
-      return <img src={value.url} alt={value.alt || 'Image'} />;
+      return <img src={value.src} alt={value.alt || 'Image'} />;
     }
   },
   marks: {
@@ -29,6 +30,8 @@ const components: PortableTextReactComponents = {
   unknownList: ({ children }) => <ul>{children}</ul>,
   unknownListItem: ({ children }) => <li>{children}</li>,
 };
+
+console.log(components);
 
 const RichText: React.FC<RichTextProps> = ({ value }) => {
   return <PortableText value={value} components={components} />;
