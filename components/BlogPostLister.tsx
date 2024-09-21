@@ -5,6 +5,12 @@ import { Post } from '../lib/interfaces';
 import { ExpandableCard } from './ui/ExpandableCard';
 import { urlFor } from '@/sanity/lib/image';
 import { PortableText } from '@portabletext/react';
+import {PortableTextComponents} from '@portabletext/react'
+
+interface ImageValue {
+  asset: object;
+  alt: string;
+}
 
 const blogQuery = groq`
   *[_type == "post"]{
@@ -17,17 +23,17 @@ const blogQuery = groq`
   } | order(publishedAt desc)
 `;
 
+const ImageComponent = ({ value }: { value: ImageValue }) => {
+  return <img src={urlFor(value.asset).url()} alt={value.alt} />;
+};
+const components: PortableTextComponents = {
+  types: {
+    image: ({ value }: { value: ImageValue }) => <ImageComponent value={value} />,
+  },
+};
+
 export default async function BlogPostLister() {
   const posts = await client.fetch<Post[]>(blogQuery);
-
-  const ImageComponent = ({ value }: { value: any }) => {
-    return <img src={urlFor(value.asset).url()} alt={value.alt} />;
-  };
-  const components = {
-    types: {
-      image: ({ value }: { value: string }) => <ImageComponent value={value} />,
-    },
-  };
 
   // Instead of passing a function, we render the PortableText directly into the card object
   const cards = posts.map((post) => ({
@@ -44,12 +50,7 @@ export default async function BlogPostLister() {
   return (
     <div className="bg-background text-foreground">
       <ExpandableCard cards={cards} />
-      {/* <PortableText value={posts[0].body}  /> */}
-      
-      {/* <img src={urlFor(posts[0].mainImage).width(200).flipHorizontal().url()} alt={posts[0].title}  /> */}
-      {/* {posts.map((post) => (
-        <BlogPostPreview key={post._id} post={post} />
-      ))} */}
+      <PortableText value={posts[0].body} components={components} />
     </div>
   );
 }
