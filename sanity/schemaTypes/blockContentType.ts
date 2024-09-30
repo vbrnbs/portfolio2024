@@ -30,6 +30,7 @@ export const blockContentType = defineType({
         {title: 'H3', value: 'h3'},
         {title: 'H4', value: 'h4'},
         {title: 'Quote', value: 'blockquote'},
+        {title: 'Link', value: 'link'},
       ],
       lists: [{title: 'Bullet', value: 'bullet'}],
       // Marks let you mark up inline text in the Portable Text Editor
@@ -56,6 +57,19 @@ export const blockContentType = defineType({
           },
         ],
       },
+    }),
+    defineArrayMember({
+      type: 'object',
+      name: 'embedHTML',
+      title: 'Embed HTML',
+      fields: [
+        {
+          name: 'html',
+          type: 'text',
+          title: 'HTML Code',
+          description: 'Paste your HTML code here, such as iframe embeds',
+        },
+      ],
     }),
     // You can add additional types here. Note that you can't use
     // primitive types such as 'string' and 'number' in the same array

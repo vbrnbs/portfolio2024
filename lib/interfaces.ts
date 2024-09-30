@@ -28,13 +28,25 @@
   // lib/interfaces.ts
 import { PortableTextBlock } from '@portabletext/types';
 
+export interface Card {
+  description: string;
+  title: string;
+  src: string;
+  ctaText: string;
+  ctaLink: string;
+  content: JSX.Element;
+  highlighted?: boolean;
+}
+
 export interface Post {
   _id: string;
   title: string;
   slug: { current: string };
-  mainImage: {
+  images: Array<{
     asset: { url: string };
-  };
+    alt?: string;
+  }>;
   publishedAt: string;
   body: PortableTextBlock[];
+  highlighted: boolean;
 }

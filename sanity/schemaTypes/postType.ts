@@ -20,19 +20,26 @@ export const postType = defineType({
     }),
     
     defineField({
-      name: 'mainImage',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
-      fields: [
+      name: 'images',
+      type: 'array',
+      of: [
         {
-          name: 'alt',
-          type: 'string',
-          title: 'Alternative text',
+          type: 'image',
+          options: {
+            hotspot: true,
+          },
+          fields: [
+            {
+              name: 'alt',
+              type: 'string',
+              title: 'Alternative text',
+            }
+          ]
         }
-      ]
+      ],
+      validation: Rule => Rule.min(1).max(5),
     }),
+  
     defineField({
       name: 'categories',
       type: 'array',
@@ -50,6 +57,10 @@ export const postType = defineType({
       name: 'author',
       type: 'reference',
       to: {type: 'author'},
+    }),
+    defineField({
+      name: 'highlighted',
+      type: 'boolean',
     }),
   ],
   preview: {
