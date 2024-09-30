@@ -53,7 +53,7 @@ export default async function BlogPostLister() {
   const posts = await client.fetch<Post[]>(blogQuery);
 
   // Instead of passing a function, we render the PortableText directly into the card object
-  const cards = posts.map((post, index) => ({
+  const cards = posts.map((post) => ({
     description: post.title,
     title: post.title,
     src: urlFor(post.images[0]).url(),
