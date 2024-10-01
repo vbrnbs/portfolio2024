@@ -18,7 +18,12 @@ export const postType = defineType({
         source: 'title',
       },
     }),
-    
+    defineField({
+        name: 'iframeSrc',
+        type: 'string',
+        title: 'Iframe Source URL',
+        description: 'Enter the URL for the iframe',
+    }),
     defineField({
       name: 'images',
       type: 'array',

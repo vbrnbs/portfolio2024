@@ -24,7 +24,8 @@ const blogQuery = groq`
     images,
     publishedAt,
     body,
-    highlighted
+    highlighted,
+    iframeSrc
   } | order(publishedAt desc)
 `;
 
@@ -33,20 +34,10 @@ const blogQuery = groq`
 const ImageComponent = ({ value }: { value: ImageValue }) => {
   return <img src={urlFor(value.asset).url()} alt={value.alt} />;
 };
-const components: PortableTextComponents = {
+export const components: PortableTextComponents = {
   types: {
     image: ({ value }: { value: ImageValue }) => <ImageComponent value={value} />,
   },
-  // marks: {
-  //   codeblock: ({ value }: { value: CodeBlock }) => (
-  //     <Code 
-  //       value={value} 
-  //       isInline={false} 
-  //       index={0}
-  //       renderNode={(props) =>  <span {...props} />}
-  //     />
-  //   ),
-  // },
 };
 
 export default async function BlogPostLister() {
@@ -60,15 +51,31 @@ export default async function BlogPostLister() {
     ctaText: "View",
     ctaLink: `/posts/${post.slug.current}`,
     highlighted: post.highlighted,
+    iframe: post.iframeSrc,
     content: <PortableText value={post.body} components={components}/>//components={components} /> // Render the content here as JSX
   }));
 
-  console.log(posts[0].body);
+  console.log(posts[0].title, ': ', posts[0].iframeSrc);
 
   return (
     <div className="bg-background text-foreground">
       <ExpandableCard cards={cards} />
-      <PortableText value={posts[0].body} components={components} />
-    </div>
+      {/* <PortableText value={posts[0].body} components={components} /> */}
+      {/* {cards[0].iframe && (
+      <div className="w-full h-full">
+        yess */}
+      <iframe
+              src={cards[0].iframe}
+              style={{
+                width: '100%',
+                height: '500px',
+                border: 'none',
+              }}
+              title={`Iframe for ${cards[0].title}`}
+              allowFullScreen
+            />
+      {/* </div>
+      )} */}
+    </div> 
   );
 }

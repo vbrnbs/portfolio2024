@@ -49,4 +49,5 @@ export interface Post {
   publishedAt: string;
   body: PortableTextBlock[];
   highlighted: boolean;
+  iframeSrc: string;
 }
