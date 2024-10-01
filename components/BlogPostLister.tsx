@@ -41,10 +41,17 @@ const ImageComponent = ({ value }: { value: ImageValue }) => {
   height={500}
   />;
 };
+const EmbedHTML = ({ value }: { value: { html: string } }) => (
+  <div dangerouslySetInnerHTML={{ __html: value.html }} />
+)
+
+
 export const components: PortableTextComponents = {
   types: {
     image: ({ value }: { value: ImageValue }) => <ImageComponent value={value} />,
+    embedHTML: EmbedHTML,
   },
+  
 };
 
 export default async function BlogPostLister() {

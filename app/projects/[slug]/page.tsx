@@ -36,7 +36,7 @@ export default async function BlogPost({ params }: Props) {
   }
 
   return (
-    <div>
+    <div className="px-2">
       <header>
         <h1 className='text-4xl font-bold'>{post.title}</h1>
         <p>Published on: {new Date(post.publishedAt).toLocaleDateString()}</p>
