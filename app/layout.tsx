@@ -37,7 +37,9 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <Header />
-            {children}
+            <div className="container mx-auto">
+              {children}
+            </div>
           </ThemeProvider>
       </body>
     </html>

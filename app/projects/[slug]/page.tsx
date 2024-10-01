@@ -5,6 +5,8 @@ import Image from 'next/image'
 import { urlFor } from '@/sanity/lib/image'
 import './styles.css'
 import { components } from '@/components/BlogPostLister'
+import { ImageValue } from 'sanity'
+import { SanityImageSource } from '@sanity/image-url/lib/types/types'
 
 type Props = {
   params: { slug: string }
@@ -47,10 +49,10 @@ export default async function BlogPost({ params }: Props) {
     
       {post.images && post.images.length > 0 && (
         <div className="grid grid-cols-2 gap-4">
-          {post.images.map((image: any, index: any) => (
+          {post.images.map((image: ImageValue, index: number) => (
             <div key={index} className="aspect-square relative">
               <Image
-                src={urlFor(image.asset).url()}
+                src={urlFor(image.asset as SanityImageSource).url()}
                 alt={`${post.title} - Image ${index + 1}`}
                 layout="fill"
                 objectFit="cover"

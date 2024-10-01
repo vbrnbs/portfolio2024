@@ -6,6 +6,7 @@ import { ExpandableCard } from './ui/ExpandableCard';
 import { urlFor } from '@/sanity/lib/image';
 import { PortableText } from '@portabletext/react';
 import {PortableTextComponents} from '@portabletext/react'
+import Image from 'next/image';
 // import {PortableTextTypeComponent} from '@portabletext/react'
 // import { Code } from './Code';
 // import { CodeBlock } from './Code';
@@ -32,7 +33,13 @@ const blogQuery = groq`
 
 
 const ImageComponent = ({ value }: { value: ImageValue }) => {
-  return <img src={urlFor(value.asset).url()} alt={value.alt} />;
+  return <Image 
+  src={urlFor(value.asset).url()} alt={value.alt} 
+  // layout="fill"
+  // objectFit="cover" 
+  width={500}
+  height={500}
+  />;
 };
 export const components: PortableTextComponents = {
   types: {
@@ -49,7 +56,7 @@ export default async function BlogPostLister() {
     title: post.title,
     src: urlFor(post.images[0]).url(),
     ctaText: "View",
-    ctaLink: `/posts/${post.slug.current}`,
+    ctaLink: `/projects/${post.slug.current}`,
     highlighted: post.highlighted,
     iframe: post.iframeSrc,
     content: <PortableText value={post.body} components={components}/>//components={components} /> // Render the content here as JSX
