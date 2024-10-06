@@ -31,7 +31,7 @@ import { PortableTextBlock } from '@portabletext/types';
 export interface Card {
   description: string;
   title: string;
-  src: string;
+  src: string[];
   ctaText: string;
   ctaLink: string;
   content: JSX.Element;
