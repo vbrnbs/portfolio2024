@@ -25,18 +25,36 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, title }) => {
   return (
     <div className="relative">
       <div className="flex items-center justify-center">
-        <button onClick={prevImage} className="absolute left-0 z-10 w-7 h-7 bg-gray-200 rounded-full translate-x-2">
+        <button onClick={prevImage} className="absolute left-0 z-10 w-7 h-7 bg-gray-200 rounded-full translate-x-2 hidden md:block">
           &lt;
         </button>
-        <Image
-          priority
-          width={200}
-          height={200}
-          src={images[currentIndex]}
-          alt={title}
-          className="w-full h-80 lg:h-80 sm:rounded-tr-lg sm:rounded-tl-lg object-cover object-top"
-        />
-        <button onClick={nextImage} className="absolute right-0 z-10 w-7 h-7 bg-gray-200 rounded-full -translate-x-2">
+        <div
+          className="relative w-full h-80 lg:h-80 sm:rounded-tr-lg sm:rounded-tl-lg overflow-hidden cursor-pointer"
+          onClick={nextImage}
+          onTouchStart={(e) => {
+            const touchStartX = e.touches[0].clientX;
+            const handleTouchEnd = (event: TouchEvent) => {
+              const touchEndX = event.changedTouches[0].clientX;
+              if (touchStartX - touchEndX > 50) {
+                nextImage();
+              } else if (touchEndX - touchStartX > 50) {
+                prevImage();
+              }
+              document.removeEventListener('touchend', handleTouchEnd);
+            };
+            document.addEventListener('touchend', handleTouchEnd);
+          }}
+        >
+          <Image
+            priority
+            width={200}
+            height={200}
+            src={images[currentIndex]}
+            alt={title}
+            className="w-full h-full object-cover object-top"
+          />
+        </div>
+        <button onClick={nextImage} className="absolute right-0 z-10 w-7 h-7 bg-gray-200 rounded-full -translate-x-2 hidden md:block">
           &gt;
         </button>
       </div>
