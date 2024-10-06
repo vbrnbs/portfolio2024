@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 interface ImageCarouselProps {
   images: string[];
@@ -8,14 +9,17 @@ interface ImageCarouselProps {
 
 const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, title }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [x, setX] = useState(100);
   const totalImages = images.length;
 
   const nextImage = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % totalImages);
+    setX(100);
   };
 
   const prevImage = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + totalImages) % totalImages);
+    setX(-100);
   };
 
   const handleDotClick = (index: number) => {
@@ -45,14 +49,23 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, title }) => {
             document.addEventListener('touchend', handleTouchEnd);
           }}
         >
-          <Image
-            priority
-            width={200}
-            height={300}
-            src={images[currentIndex]}
-            alt={title}
-            className="w-full h-full object-cover object-top"
-          />
+          <motion.div
+            key={currentIndex}
+            initial={{ x: -x, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: x, opacity: 0 }}
+            transition={{ duration: .7 }}
+            className="absolute inset-0"
+          >
+            <Image
+              priority
+              width={200}
+              height={300}
+              src={images[currentIndex]}
+              alt={title}
+              className="w-full h-full object-cover object-top"
+            />
+          </motion.div>
         </div>
         <button onClick={nextImage} className="absolute right-0 z-10 w-7 h-7 bg-gray-200 rounded-full -translate-x-2 hidden md:block">
           &gt;
