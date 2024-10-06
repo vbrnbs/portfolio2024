@@ -7,9 +7,7 @@ import { urlFor } from '@/sanity/lib/image';
 import { PortableText } from '@portabletext/react';
 import {PortableTextComponents} from '@portabletext/react'
 import Image from 'next/image';
-// import {PortableTextTypeComponent} from '@portabletext/react'
-// import { Code } from './Code';
-// import { CodeBlock } from './Code';
+
 
 interface ImageValue {
   asset: object;
@@ -61,7 +59,7 @@ export default async function BlogPostLister() {
   const cards = posts.map((post) => ({
     description: post.title,
     title: post.title,
-    src: urlFor(post.images[0]).url(),
+    src: post.images.map(image => urlFor(image.asset).url()),
     ctaText: "View",
     ctaLink: `/projects/${post.slug.current}`,
     highlighted: post.highlighted,
@@ -74,22 +72,6 @@ export default async function BlogPostLister() {
   return (
     <div className="bg-background text-foreground">
       <ExpandableCard cards={cards} />
-      {/* <PortableText value={posts[0].body} components={components} /> */}
-      {/* {cards[0].iframe && (
-      <div className="w-full h-full">
-        yess */}
-      <iframe
-              src={cards[0].iframe}
-              style={{
-                width: '100%',
-                height: '500px',
-                border: 'none',
-              }}
-              title={`Iframe for ${cards[0].title}`}
-              allowFullScreen
-            />
-      {/* </div>
-      )} */}
     </div> 
   );
 }
