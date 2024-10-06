@@ -48,7 +48,7 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, title }) => {
           <Image
             priority
             width={200}
-            height={200}
+            height={300}
             src={images[currentIndex]}
             alt={title}
             className="w-full h-full object-cover object-top"

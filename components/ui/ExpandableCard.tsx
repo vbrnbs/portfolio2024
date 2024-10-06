@@ -63,7 +63,7 @@ export function ExpandableCard({ cards }: { cards: Card[] }) {
                   duration: 0.05,
                 },
               }}
-              className="flex absolute top-2 right-2 lg:hidden items-center justify-center bg-white rounded-full h-6 w-6"
+              className="flex absolute top-2 right-2 lg:hidden items-center justify-center bg-white rounded-full h-6 w-6 z-20"
               onClick={() => setActive(null)}
             >
               <CloseIcon />
@@ -73,19 +73,8 @@ export function ExpandableCard({ cards }: { cards: Card[] }) {
               ref={ref}
               className="w-full max-w-[500px]  h-full md:h-fit md:max-h-[90%]  flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl overflow-hidden"
             >
-              <motion.div layoutId={`image-${active.title}-${id}`}>
-               
-             {/* {  active.src.map((src) => ( */}
+              <motion.div layoutId={`image-${active.title}-${id}`}>  
                 <ImageCarousel images={active.src} title={active.title} />
-                
-                {/* <Image
-                  priority
-                  width={200}
-                  height={200}
-                  src={active.src}
-                  alt={active.title}
-                  className="w-full h-80 lg:h-80 sm:rounded-tr-lg sm:rounded-tl-lg object-cover object-top"
-                /> */}
               </motion.div>
 
               <div className="bg-neutral-100 dark:bg-neutral-800 w-full" >
