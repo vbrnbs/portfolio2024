@@ -26,9 +26,8 @@ export const CloseIcon = () => {
         strokeLinejoin="round"
         className="h-5 w-5 text-black z-20" // Increased from h-4 w-4 to h-6 w-6
       >
-        <path stroke="none" d="M0 0h36v36H0z" fill="none" /> // Increased from 24 to 36
-        <path d="M27 9l-18 18" /> // Adjusted coordinates for larger size
-        <path d="M9 9l18 18" /> // Adjusted coordinates for larger size
+        <path stroke="none" d="M0 0h36v36H0z" fill="none" /> 
+        <path d="M9 9l18 18" /> 
       </motion.svg>
     );
   };
