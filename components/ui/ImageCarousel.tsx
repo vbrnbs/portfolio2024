@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { ChevronRight, ChevronLeft } from "lucide-react";
+
 
 interface ImageCarouselProps {
   images: string[];
@@ -29,8 +31,8 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, title }) => {
   return (
     <div className="relative">
       <div className="flex items-center justify-center">
-        <button onClick={prevImage} className="absolute left-0 z-10 w-7 h-7 bg-gray-100 text-black font-bold rounded-full translate-x-2 hidden md:block">
-          &lt;
+        <button onClick={prevImage} className="absolute left-2 z-10 w-8 h-8 bg-gray-100 text-black rounded-full hidden md:flex items-center justify-center hover:bg-white">
+          <ChevronLeft />
         </button>
         <div
           className="relative w-full h-96 sm:rounded-tr-lg sm:rounded-tl-lg overflow-hidden cursor-pointer"
@@ -67,8 +69,8 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, title }) => {
             />
           </motion.div>
         </div>
-        <button onClick={nextImage} className="absolute right-0 z-10 w-7 h-7 bg-gray-100 text-black font-bold rounded-full -translate-x-2 hidden md:block">
-          &gt;
+        <button onClick={nextImage} className="absolute right-2 z-10 w-8 h-8 bg-gray-100 text-black rounded-full hidden md:flex items-center justify-center hover:bg-white">
+          <ChevronRight />
         </button>
       </div>
       <div className="flex justify-center mt-2">

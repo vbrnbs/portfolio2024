@@ -102,7 +102,7 @@ export function ExpandableCard({ cards }: { cards: Card[] }) {
                     layoutId={`button-${active.title}-${id}`}
                     href={active.ctaLink}
                     target="_blank"
-                    className="px-4 py-3 text-sm rounded-full font-bold bg-green-500 text-white"
+                    className="px-4 py-3 text-sm rounded-full font-bold bg-primary text-secondary hover:animate-spin"
                   >
                     {active.ctaText}
                   </motion.a>
@@ -124,7 +124,7 @@ export function ExpandableCard({ cards }: { cards: Card[] }) {
           </div>
         ) : null}
       </AnimatePresence>
-      <div className="max-w-4xl mx-auto w-full">
+      <div className=" mx-auto w-full">
         <div className="px-1 flex flex-wrap gap-4">
           {cards.map((card: typeof cards[number]) => (
             <motion.div

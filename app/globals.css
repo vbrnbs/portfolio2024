@@ -91,28 +91,17 @@ body {
   }
 }
 
-/* .container {
-  max-width: 990px;
-  flex: 1 1 100%;
-  padding: 45px 25px;
-} */
-
-ul,
-li {
-  /* list-style: none;
-  padding: 0;
-  margin: 0; */
+.card {
+  flex: 0 0 100%;
+  max-width: 100%;
+  width: 100%;
+  height: auto;
 }
 
-/* .card-list {
-  display: flex;
-  flex-wrap: wrap;
-  align-content: flex-start;
-} */
-
+@media (min-width: 768px) {
 .card {
   /* position: relative; */
-  justify-content: space-between;
+  /* justify-content: space-between; */
   /* padding: 25px; */
   /* height: 460px;  */
   flex: 0 0 35%;
@@ -133,4 +122,5 @@ li {
 
 .card:nth-child(even) {
   padding-right: 0;
+}
 }
