@@ -29,11 +29,11 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, title }) => {
   return (
     <div className="relative">
       <div className="flex items-center justify-center">
-        <button onClick={prevImage} className="absolute left-0 z-10 w-7 h-7 bg-gray-200 rounded-full translate-x-2 hidden md:block">
+        <button onClick={prevImage} className="absolute left-0 z-10 w-7 h-7 bg-gray-100 text-black font-bold rounded-full translate-x-2 hidden md:block">
           &lt;
         </button>
         <div
-          className="relative w-full h-80 lg:h-80 sm:rounded-tr-lg sm:rounded-tl-lg overflow-hidden cursor-pointer"
+          className="relative w-full h-96 sm:rounded-tr-lg sm:rounded-tl-lg overflow-hidden cursor-pointer"
           onClick={nextImage}
           onTouchStart={(e) => {
             const touchStartX = e.touches[0].clientX;
@@ -52,22 +52,22 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, title }) => {
           <motion.div
             key={currentIndex}
             initial={{ x: -x, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ x: x, opacity: 0 }}
-            transition={{ duration: .7 }}
+            animate={{ x: 0, opacity: 1, transition: { duration: .5, ease: "easeInOut" } }}
+            // exit={{ x: x, opacity: 0, transition: { duration: 1.5, ease: "easeInOut" } }}
+            // transition={{ duration: 0.5, ease: "easeInOut" }}
             className="absolute inset-0"
           >
             <Image
               priority
               width={200}
-              height={300}
+              height={300} 
               src={images[currentIndex]}
               alt={title}
-              className="w-full h-full object-cover object-top"
+              className="w-full h-full object-cover object-center"
             />
           </motion.div>
         </div>
-        <button onClick={nextImage} className="absolute right-0 z-10 w-7 h-7 bg-gray-200 rounded-full -translate-x-2 hidden md:block">
+        <button onClick={nextImage} className="absolute right-0 z-10 w-7 h-7 bg-gray-100 text-black font-bold rounded-full -translate-x-2 hidden md:block">
           &gt;
         </button>
       </div>

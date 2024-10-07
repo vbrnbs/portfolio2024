@@ -41,11 +41,11 @@ export default async function BlogPost({ params }: Props) {
         <h1 className='text-4xl font-bold'>{post.title}</h1>
         <p>Published on: {new Date(post.publishedAt).toLocaleDateString()}</p>
       </header>
-      {/* {post.iframeSrc && (
+      {post.iframeSrc && (
         <div>
           <iframe src={post.iframeSrc} width="100%" height="400" frameBorder="0"></iframe>
         </div>
-      )} */}
+      )}
     
       {post.images && post.images.length > 0 && (
         <div className="grid grid-cols-2 gap-4">

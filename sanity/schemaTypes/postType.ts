@@ -25,6 +25,12 @@ export const postType = defineType({
         description: 'Enter the URL for the iframe',
     }),
     defineField({
+      name: 'description',
+      type: 'string',
+      title: 'Description',
+      description: 'Enter a description for the post',
+    }),
+    defineField({
       name: 'images',
       type: 'array',
       of: [
@@ -66,6 +72,18 @@ export const postType = defineType({
     defineField({
       name: 'highlighted',
       type: 'boolean',
+    }),
+    defineField({
+      name: 'githubLink',
+      type: 'url',
+      title: 'GitHub Link',
+      description: 'Enter the URL for the GitHub repository',
+    }),
+    defineField({
+      name: 'link',
+      type: 'url',
+      title: 'Link',
+      description: 'Enter the URL for the link',
     }),
   ],
   preview: {

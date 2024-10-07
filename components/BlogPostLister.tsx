@@ -24,7 +24,10 @@ const blogQuery = groq`
     publishedAt,
     body,
     highlighted,
-    iframeSrc
+    iframeSrc,
+    description,
+    githubLink,
+    link
   } | order(publishedAt desc)
 `;
 
@@ -57,17 +60,18 @@ export default async function BlogPostLister() {
 
   // Instead of passing a function, we render the PortableText directly into the card object
   const cards = posts.map((post) => ({
-    description: post.title,
+    description: post.description,
     title: post.title,
     src: post.images.map(image => urlFor(image.asset).url()),
     ctaText: "View",
     ctaLink: `/projects/${post.slug.current}`,
     highlighted: post.highlighted,
     iframe: post.iframeSrc,
+    githubLink: post.githubLink,
+    link: post.link,
     content: <PortableText value={post.body} components={components}/>//components={components} /> // Render the content here as JSX
   }));
 
-  console.log(posts[0].title, ': ', posts[0].iframeSrc);
 
   return (
     <div className="bg-background text-foreground">

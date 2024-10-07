@@ -34,8 +34,10 @@ export interface Card {
   src: string[];
   ctaText: string;
   ctaLink: string;
+  githubLink: string;
+  link: string;
   content: JSX.Element;
-  highlighted?: boolean;
+  highlighted: boolean;
 }
 
 export interface Post {
@@ -50,4 +52,7 @@ export interface Post {
   body: PortableTextBlock[];
   highlighted: boolean;
   iframeSrc: string;
+  description: string;
+  githubLink: string;
+  link: string;
 }

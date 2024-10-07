@@ -71,7 +71,7 @@ export function ExpandableCard({ cards }: { cards: Card[] }) {
             <motion.div
               layoutId={`card-${active.title}-${id}`}
               ref={ref}
-              className="w-full max-w-[500px]  h-full md:h-fit md:max-h-[90%]  flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl overflow-hidden"
+              className="w-full max-w-[500px] h-full md:h-fit md:max-h-[90%]  flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl overflow-hidden"
             >
               <motion.div layoutId={`image-${active.title}-${id}`}>  
                 <ImageCarousel images={active.src} title={active.title} />
@@ -115,7 +115,8 @@ export function ExpandableCard({ cards }: { cards: Card[] }) {
                     exit={{ opacity: 0 }}
                     className="text-neutral-600 text-xs md:text-sm lg:text-base h-40 md:h-fit pb-10 flex flex-col items-start gap-4 overflow-auto dark:text-neutral-400"
                   >
-                    {active.content}
+                    tap view for more info
+                    {/* {active.content} */}
                   </motion.div>
                 </div>
               </div>
@@ -123,28 +124,28 @@ export function ExpandableCard({ cards }: { cards: Card[] }) {
           </div>
         ) : null}
       </AnimatePresence>
-      <div className="max-w-7xl mx-auto w-full">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="max-w-4xl mx-auto w-full">
+        <div className="px-1 flex flex-wrap gap-4">
           {cards.map((card: typeof cards[number]) => (
             <motion.div
               layoutId={`card-${card.title}-${id}`}
               key={`card-${card.title}-${id}`}
               onClick={() => setActive(card)}
-              className={`relative rounded-xl cursor-pointer overflow-hidden ${
-                card && card.highlighted ? 'md:col-span-2' : ''
-              }`}
+              className={'relative rounded-xl cursor-pointer overflow-hidden card'}
               style={{
                 backgroundImage: `url(${card.src[0]})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 aspectRatio: '16 / 9',
+                // aspectRatio: card && card.highlighted ? '16 / 9' : '1 / 1',
+                // height: '100%',
               }}
             >
               <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-transparent">
                 <div className="p-4">
                   <motion.h3
                     layoutId={`title-${card.title}-${id}`}
-                    className="font-medium text-white text-xl mb-2"
+                    className="font-medium text-white text-2xl mb-2"
                   >
                     {card.title}
                   </motion.h3>
@@ -152,7 +153,7 @@ export function ExpandableCard({ cards }: { cards: Card[] }) {
                     layoutId={`description-${card.description}-${id}`}
                     className="text-white/80 text-sm"
                   >
-                    {card.description}
+                    {/* {card.description} */}
                   </motion.p>
                 </div>
               </div>
