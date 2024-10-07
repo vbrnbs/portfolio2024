@@ -3,8 +3,8 @@ import React, { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useOutsideClick } from "@/hooks/use-outside-clicks";
 import { Card } from "@/lib/interfaces";
-import { CloseIcon } from "./CloseIcon";
 import ImageCarousel from "./ImageCarousel";
+import { CircleX } from "lucide-react";
 
 
 export function ExpandableCard({ cards }: { cards: Card[] }) {
@@ -63,10 +63,10 @@ export function ExpandableCard({ cards }: { cards: Card[] }) {
                   duration: 0.05,
                 },
               }}
-              className="flex absolute top-2 right-2 lg:hidden items-center justify-center bg-white rounded-full h-6 w-6 z-20"
+              className="flex absolute top-2 right-2 lg:hidden items-center justify-center bg-white text-black rounded-full h-7 w-7 z-20 animate-spin hover:scale-105"
               onClick={() => setActive(null)}
             >
-              <CloseIcon />
+              <CircleX size={24} />
             </motion.button>
             <motion.div
               layoutId={`card-${active.title}-${id}`}
@@ -82,30 +82,31 @@ export function ExpandableCard({ cards }: { cards: Card[] }) {
               </div>
 
               <div>
-                <div className="flex justify-between items-start p-4">
-                  <div className="">
+                <div className=" p-4">
+                  <div className="flex justify-between items-start mb-4">
                     <motion.h3
                       layoutId={`title-${active.title}-${id}`}
                       className="font-bold text-neutral-700 dark:text-neutral-200"
                     >
                       {active.title}
                     </motion.h3>
-                    <motion.p
+                    <motion.a
+                    layoutId={`button-${active.title}-${id}`}
+                    href={active.ctaLink}
+                    target="_blank"
+                    className="px-4 py-3 text-sm rounded-full font-bold bg-primary text-secondary animate-bounce hover:animate-pulse"
+                  >
+                    {active.ctaText}
+                  </motion.a>
+                    
+                  </div>
+                  <motion.p
                       layoutId={`description-${active.description}-${id}`}
                       className="text-neutral-600 dark:text-neutral-400"
                     >
                       {active.description}
                     </motion.p>
-                  </div>
-
-                  <motion.a
-                    layoutId={`button-${active.title}-${id}`}
-                    href={active.ctaLink}
-                    target="_blank"
-                    className="px-4 py-3 text-sm rounded-full font-bold bg-primary text-secondary hover:animate-spin"
-                  >
-                    {active.ctaText}
-                  </motion.a>
+                  
                 </div>
                 <div className="pt-4 relative px-4">
                   <motion.div
@@ -115,7 +116,6 @@ export function ExpandableCard({ cards }: { cards: Card[] }) {
                     exit={{ opacity: 0 }}
                     className="text-neutral-600 text-xs md:text-sm lg:text-base h-40 md:h-fit pb-10 flex flex-col items-start gap-4 overflow-auto dark:text-neutral-400"
                   >
-                    tap view for more info
                     {/* {active.content} */}
                   </motion.div>
                 </div>

@@ -31,7 +31,7 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, title }) => {
   return (
     <div className="relative">
       <div className="flex items-center justify-center">
-        <button onClick={prevImage} className="absolute left-2 z-10 w-8 h-8 bg-gray-100 text-black rounded-full hidden md:flex items-center justify-center hover:bg-white">
+        <button onClick={prevImage} className="absolute left-2 z-10 w-8 h-8 bg-gray-100 text-black rounded-full hidden md:flex items-center justify-center hover:bg-white hover:scale-105">
           <ChevronLeft />
         </button>
         <div
@@ -53,8 +53,8 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, title }) => {
         >
           <motion.div
             key={currentIndex}
-            initial={{ x: -x, opacity: 0 }}
-            animate={{ x: 0, opacity: 1, transition: { duration: .5, ease: "easeInOut" } }}
+            initial={{ x: -x, /*opacity: 0 */ }}
+            animate={{ x: 0, /*opacity: 1,*/ transition: { duration: .5, ease: "easeInOut" } }}
             // exit={{ x: x, opacity: 0, transition: { duration: 1.5, ease: "easeInOut" } }}
             // transition={{ duration: 0.5, ease: "easeInOut" }}
             className="absolute inset-0"
@@ -69,7 +69,7 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, title }) => {
             />
           </motion.div>
         </div>
-        <button onClick={nextImage} className="absolute right-2 z-10 w-8 h-8 bg-gray-100 text-black rounded-full hidden md:flex items-center justify-center hover:bg-white">
+        <button onClick={nextImage} className="absolute right-2 z-10 w-8 h-8 bg-gray-100 text-black rounded-full hidden md:flex items-center justify-center hover:bg-white hover:scale-105">
           <ChevronRight />
         </button>
       </div>
