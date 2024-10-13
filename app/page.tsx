@@ -1,5 +1,4 @@
 import BlogPostFilter from "@/components/BlogPostFilter";
-import BlogPostLister from "@/components/BlogPostLister";
 import { Post } from "@/lib/interfaces";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
