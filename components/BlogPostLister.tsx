@@ -4,7 +4,7 @@ import { Post } from '../lib/interfaces';
 // import BlogPostPreview from '@/components/BlogPostPreview';
 import { ExpandableCard } from './ui/ExpandableCard';
 import { urlFor } from '@/sanity/lib/image';
-import { PortableText } from '@portabletext/react';
+// import { PortableText } from '@portabletext/react';
 import {PortableTextComponents} from '@portabletext/react'
 import Image from 'next/image';
 import { Button } from './ui/button';
