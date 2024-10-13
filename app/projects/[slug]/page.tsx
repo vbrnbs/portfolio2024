@@ -27,7 +27,7 @@ const EmbedHTML = ({ value }: { value: { html: string } }) => (
 )
 
 
-export const components: PortableTextComponents = {
+const components: PortableTextComponents = {
   types: {
     image: ({ value }: { value: ImageValue }) => <ImageComponent value={value} />,
     embedHTML: EmbedHTML,
