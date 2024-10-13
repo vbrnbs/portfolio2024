@@ -7,6 +7,7 @@ import ImageCarousel from "./ImageCarousel";
 import { CircleX } from "lucide-react";
 
 
+// export function ExpandableCard({ cards, setFilteredCards }: { cards: Card[], setFilteredCards: (cards: Card[]) => void }) {
 export function ExpandableCard({ cards }: { cards: Card[] }) {
   const [active, setActive] = useState<(typeof cards)[number] | boolean | null>(
     null
@@ -75,7 +76,7 @@ export function ExpandableCard({ cards }: { cards: Card[] }) {
             <motion.div
               layoutId={`card-${active.title}-${id}`}
               ref={ref}
-              className="w-full max-w-[500px] h-full md:h-fit md:max-h-[90%]  flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl overflow-hidden"
+              className="w-full max-w-[500px] h-full md:h-fit max-h-[90%]  flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl overflow-hidden"
             >
               <motion.div layoutId={`image-${active.title}-${id}`}>  
                 <ImageCarousel images={active.src} title={active.title} />
@@ -95,7 +96,11 @@ export function ExpandableCard({ cards }: { cards: Card[] }) {
                       {active.title}
                       <div className="flex flex-wrap gap-2 mt-2">
                       {active.categories && active.categories.map((category) => (
-                        <span key={category._key} className="text-xs text-neutral-500 dark:text-neutral-400 font-thin hover:underline hover:cursor-pointer">{category.title}</span>
+                        <span key={category._key} className="text-xs text-neutral-500 dark:text-neutral-400 font-thin hover:underline hover:cursor-pointer">
+                          {/* <span onClick={() => { setFilteredCards(cards.filter(card => card.categories.some(cat => cat.title === category.title))); setActive(null); }}> */}
+                            {category.title}
+                          {/* </span> */}
+                        </span>
                       ))}
                       </div>
                     

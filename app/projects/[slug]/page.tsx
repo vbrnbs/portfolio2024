@@ -1,12 +1,38 @@
 import { groq } from 'next-sanity'
 import { client } from '@/sanity/lib/client'
-import { PortableText } from '@portabletext/react'
+import { PortableText, PortableTextComponents } from '@portabletext/react'
 import Image from 'next/image'
 import { urlFor } from '@/sanity/lib/image'
 import './styles.css'
-import { components } from '@/components/BlogPostLister'
-import { ImageValue } from 'sanity'
 import { SanityImageSource } from '@sanity/image-url/lib/types/types'
+
+interface ImageValue {
+  asset: object;
+  alt: string;
+}
+
+
+const ImageComponent = ({ value }: { value: ImageValue }) => {
+  return <Image 
+  src={urlFor(value.asset).url()} alt={value.alt} 
+  // layout="fill"
+  // objectFit="cover" 
+  width={500}
+  height={500}
+  />;
+};
+
+const EmbedHTML = ({ value }: { value: { html: string } }) => (
+  <div dangerouslySetInnerHTML={{ __html: value.html }} />
+)
+
+
+export const components: PortableTextComponents = {
+  types: {
+    image: ({ value }: { value: ImageValue }) => <ImageComponent value={value} />,
+    embedHTML: EmbedHTML,
+  },
+};
 
 type Props = {
   params: { slug: string }
@@ -70,3 +96,12 @@ export default async function BlogPost({ params }: Props) {
     </div>
   )
 }
+
+/*
+
+
+
+
+  
+};
+*/
