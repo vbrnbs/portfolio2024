@@ -14,6 +14,10 @@ export function ExpandableCard({ cards }: { cards: Card[] }) {
   const ref = useRef<HTMLDivElement>(null);
   const id = useId();
 
+  const filterByCategory = (categorySlug: string) => {
+    console.log(categorySlug);
+  };
+
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") {
@@ -89,6 +93,12 @@ export function ExpandableCard({ cards }: { cards: Card[] }) {
                       className="font-bold text-neutral-700 dark:text-neutral-200"
                     >
                       {active.title}
+                      <div className="flex flex-wrap gap-2 mt-2">
+                      {active.categories && active.categories.map((category) => (
+                        <span key={category._key} className="text-xs text-neutral-500 dark:text-neutral-400 font-thin hover:underline hover:cursor-pointer">{category.title}</span>
+                      ))}
+                      </div>
+                    
                     </motion.h3>
                     <motion.a
                     layoutId={`button-${active.title}-${id}`}
@@ -116,7 +126,6 @@ export function ExpandableCard({ cards }: { cards: Card[] }) {
                     exit={{ opacity: 0 }}
                     className="text-neutral-600 text-xs md:text-sm lg:text-base h-40 md:h-fit pb-10 flex flex-col items-start gap-4 overflow-auto dark:text-neutral-400"
                   >
-                    {/* {active.content} */}
                   </motion.div>
                 </div>
               </div>
@@ -140,7 +149,7 @@ export function ExpandableCard({ cards }: { cards: Card[] }) {
                 // aspectRatio: card && card.highlighted ? '16 / 9' : '1 / 1',
                 // height: '100%',
               }}
-            >
+            >       
               <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-transparent">
                 <div className="p-4">
                   <motion.h3
@@ -149,6 +158,15 @@ export function ExpandableCard({ cards }: { cards: Card[] }) {
                   >
                     {card.title}
                   </motion.h3>
+                  {card.categories && card.categories.map((category) => (
+                    <span 
+                      key={category._key} 
+                      className="text-white/80 text-sm font-italic font-bold hover:underline hover:cursor-pointer hover:text-primary hover:font-bold hover:scale-105"
+                      onClick={() => filterByCategory(category.slug)} // Call the filter function on click
+                    >
+                      {`${category.title} `}
+                    </span>
+                  ))}
                   <motion.p
                     layoutId={`description-${card.description}-${id}`}
                     className="text-white/80 text-sm"

@@ -16,12 +16,12 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, title }) => {
 
   const nextImage = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % totalImages);
-    setX(100);
+    setX(500);
   };
 
   const prevImage = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + totalImages) % totalImages);
-    setX(-100);
+    setX(-500);
   };
 
   const handleDotClick = (index: number) => {
@@ -53,8 +53,8 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, title }) => {
         >
           <motion.div
             key={currentIndex}
-            initial={{ x: -x, /*opacity: 0 */ }}
-            animate={{ x: 0, /*opacity: 1,*/ transition: { duration: .5, ease: "easeInOut" } }}
+            initial={{ x: -x, opacity: 0  }}
+            animate={{ x: 0, opacity: 1, transition: { duration: .5, ease: "easeInOut" } }}
             // exit={{ x: x, opacity: 0, transition: { duration: 1.5, ease: "easeInOut" } }}
             // transition={{ duration: 0.5, ease: "easeInOut" }}
             className="absolute inset-0"

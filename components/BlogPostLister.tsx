@@ -7,6 +7,7 @@ import { urlFor } from '@/sanity/lib/image';
 import { PortableText } from '@portabletext/react';
 import {PortableTextComponents} from '@portabletext/react'
 import Image from 'next/image';
+import { Button } from './ui/button';
 
 
 interface ImageValue {
@@ -22,15 +23,13 @@ const blogQuery = groq`
     slug,
     images,
     publishedAt,
-    body,
-    highlighted,
-    iframeSrc,
     description,
-    githubLink,
-    link
+    categories[] -> {
+      title,
+      slug
+    }
   } | order(publishedAt desc)
 `;
-
 
 
 const ImageComponent = ({ value }: { value: ImageValue }) => {
@@ -58,23 +57,30 @@ export const components: PortableTextComponents = {
 export default async function BlogPostLister() {
   const posts = await client.fetch<Post[]>(blogQuery);
 
-  // Instead of passing a function, we render the PortableText directly into the card object
   const cards = posts.map((post) => ({
     description: post.description,
     title: post.title,
     src: post.images.map(image => urlFor(image.asset).url()),
     ctaText: "View",
     ctaLink: `/projects/${post.slug.current}`,
-    highlighted: post.highlighted,
-    iframe: post.iframeSrc,
-    githubLink: post.githubLink,
-    link: post.link,
-    content: <PortableText value={post.body} components={components}/>//components={components} /> // Render the content here as JSX
+    categories: post.categories,
+    // content: <PortableText value={post.body} components={components}/>//components={components} /> // Render the content here as JSX
   }));
 
 
   return (
     <div className="bg-background text-foreground">
+      <div className="flex flex-wrap gap-2 p-4">
+        {Array.from(new Set(cards.flatMap(card => card.categories.map(category => category.title)))).map((category, index) => (
+          <Button 
+            key={index} 
+            className="px-4 py-2 bg-primary text-white rounded hover:bg-primary-dark"
+            // onClick={() => console.log(`Filter by category: ${category}`)} // Replace with actual filter function
+          >
+            {category}
+          </Button>
+        ))}
+      </div>
       <ExpandableCard cards={cards} />
     </div> 
   );
