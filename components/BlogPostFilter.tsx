@@ -11,10 +11,10 @@ export default function BlogPostFilter({ cards }: { cards: Card[] }) {
   
   const categories = Array.from(new Set(cards.flatMap(card => card.categories.map(category => category.title))));
 
-  const handleFilter = (category: string) => {
+  const handleFilter = (category: string | null) => {
     setFilter(category);
     const filteredPosts = cards.filter(card => 
-      card.categories.some(cat => cat.title === category)
+      category ? card.categories.some(cat => cat.title === category) : true
     );
     console.log(filteredPosts);
     setFilteredCards(filteredPosts);
@@ -23,6 +23,14 @@ export default function BlogPostFilter({ cards }: { cards: Card[] }) {
   return (
     <div>
       <div className="flex flex-wrap gap-2 p-4">
+        {
+          <Button 
+            variant={filter === null ? "default" : "outline"}
+            onClick={() => handleFilter(null)}
+          >
+            All
+          </Button>
+        }
         {categories.map((category, index) => (
           <Button 
             key={index} 

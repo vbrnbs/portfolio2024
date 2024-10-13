@@ -52,7 +52,7 @@ export function ExpandableCard({ cards }: { cards: Card[] }) {
       </AnimatePresence>
       <AnimatePresence>
         {active && typeof active === "object" ? (
-          <div className="fixed inset-0  grid place-items-center z-[100]">
+          <div className="fixed inset-0 grid place-items-center z-[100]">
             <motion.button
               key={`button-${active.title}-${id}`}
               layout
@@ -76,18 +76,14 @@ export function ExpandableCard({ cards }: { cards: Card[] }) {
             <motion.div
               layoutId={`card-${active.title}-${id}`}
               ref={ref}
-              className="w-full max-w-[500px] h-full md:h-fit max-h-[90%]  flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl overflow-hidden"
+              className="w-full md:max-w-4xl max-w-[500px] h-full md:max-h-[90%] flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl overflow-hidden"
             >
-              <motion.div layoutId={`image-${active.title}-${id}`}>  
+              <motion.div layoutId={`image-${active.title}-${id}`} className="flex-2">  
                 <ImageCarousel images={active.src} title={active.title} />
               </motion.div>
 
-              <div className="bg-neutral-100 dark:bg-neutral-800 w-full" >
-              {/* {active.body} */}
-              </div>
-
-              <div>
-                <div className=" p-4">
+              <div className="flex-1">
+                <div className="p-4">
                   <div className="flex justify-between items-start mb-4">
                     <motion.h3
                       layoutId={`title-${active.title}-${id}`}

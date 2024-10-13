@@ -87,12 +87,9 @@ export default async function BlogPost({ params }: Props) {
           ))}
         </div>
       )}
-
       <div>
         <PortableText value={post.body} components={components} />
       </div>
-
-      
     </div>
   )
 }

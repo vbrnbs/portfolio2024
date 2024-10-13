@@ -3,6 +3,7 @@ import { Post } from "@/lib/interfaces";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
 import { groq } from 'next-sanity';
+
 const blogQuery = groq`
   *[_type == "post"]{
     _id,
@@ -27,7 +28,7 @@ export default async function Home() {
     src: post.images.map(image => urlFor(image.asset).url()),
     ctaText: "View",
     ctaLink: `/projects/${post.slug.current}`,
-    categories: post.categories,
+    categories: post.categories
     // content: <PortableText value={post.body} components={components}/>//components={components} /> // Render the content here as JSX
   }));
 

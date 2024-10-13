@@ -35,7 +35,7 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, title }) => {
           <ChevronLeft />
         </button>
         <div
-          className="relative w-full h-96 sm:rounded-tr-lg sm:rounded-tl-lg overflow-hidden cursor-pointer"
+          className="relative w-full h-[400px] md:h-[600px] sm:rounded-tr-lg sm:rounded-tl-lg overflow-hidden cursor-pointer"
           onClick={nextImage}
           onTouchStart={(e) => {
             const touchStartX = e.touches[0].clientX;
@@ -61,8 +61,8 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, title }) => {
           >
             <Image
               priority
-              width={200}
-              height={300} 
+              width={700}
+              height={700} 
               src={images[currentIndex]}
               alt={title}
               className="w-full h-full object-cover object-center"
