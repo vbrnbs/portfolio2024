@@ -1,6 +1,6 @@
 import { groq } from 'next-sanity'
 import { client } from '@/sanity/lib/client'
-import { PortableText, PortableTextComponents } from '@portabletext/react'
+import { PortableText } from '@portabletext/react'
 import Image from 'next/image'
 import { urlFor } from '@/sanity/lib/image'
 import './styles.css'
@@ -11,12 +11,9 @@ interface ImageValue {
   alt: string;
 }
 
-
 const ImageComponent = ({ value }: { value: ImageValue }) => {
   return <Image 
   src={urlFor(value.asset).url()} alt={value.alt} 
-  // layout="fill"
-  // objectFit="cover" 
   width={500}
   height={500}
   />;
@@ -25,14 +22,6 @@ const ImageComponent = ({ value }: { value: ImageValue }) => {
 const EmbedHTML = ({ value }: { value: { html: string } }) => (
   <div dangerouslySetInnerHTML={{ __html: value.html }} />
 )
-
-
-export const components: PortableTextComponents = {
-  types: {
-    image: ({ value }: { value: ImageValue }) => <ImageComponent value={value} />,
-    embedHTML: EmbedHTML,
-  },
-};
 
 type Props = {
   params: { slug: string }
@@ -50,8 +39,6 @@ const blogQuery = groq`
     iframeSrc
   }
 `;
-
-// ... existing imports ...
 
 export default async function BlogPost({ params }: Props) {
   const slug = params.slug
@@ -89,19 +76,13 @@ export default async function BlogPost({ params }: Props) {
       )}
 
       <div>
-        <PortableText value={post.body} components={components} />
+        <PortableText value={post.body} components={{
+          types: {
+            image: ({ value }: { value: ImageValue }) => <ImageComponent value={value} />,
+            embedHTML: EmbedHTML,
+          },
+        }} />
       </div>
-
-      
     </div>
   )
 }
-
-/*
-
-
-
-
-  
-};
-*/
