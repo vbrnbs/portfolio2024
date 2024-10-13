@@ -34,7 +34,7 @@ export default async function Home() {
 
 
   return (
-    <BlogPostFilter cards={cards} />
+      <BlogPostFilter cards={cards} />
   );
 }
 

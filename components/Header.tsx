@@ -11,7 +11,7 @@ const fraunces = Fraunces({
 const Header = () => {
   return (
     <header className={ `${fraunces.className} antialiased`}>
-        <div className="flex px-4 py-3 justify-between">
+        <div className="flex px-32 py-3 justify-between mb-10">
           <Link href="/">
             <h1 className="text-3xl">brnbs</h1>
           </Link>

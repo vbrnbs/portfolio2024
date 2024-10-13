@@ -22,7 +22,7 @@ export default function BlogPostFilter({ cards }: { cards: Card[] }) {
 
   return (
     <div>
-      <div className="flex flex-wrap gap-2 p-4">
+      <div className="flex flex-wrap gap-2 py-4 justify-center md:justify-start">
         {
           <Button 
             variant={filter === null ? "default" : "outline"}

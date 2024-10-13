@@ -146,7 +146,7 @@ export function ExpandableCard({ cards }: { cards: Card[] }) {
                 backgroundImage: `url(${card.src[0]})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
-                aspectRatio: '16 / 9',
+                aspectRatio: '4 / 3',
                 // aspectRatio: card && card.highlighted ? '16 / 9' : '1 / 1',
                 // height: '100%',
               }}
