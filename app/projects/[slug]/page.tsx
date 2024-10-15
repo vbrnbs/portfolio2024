@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { urlFor } from '@/sanity/lib/image'
 import './styles.css'
 import { SanityImageSource } from '@sanity/image-url/lib/types/types'
-import { useTheme } from "next-themes"
+// import { useTheme } from "next-themes"
 
 
 interface ImageValue {
@@ -99,7 +99,7 @@ export default async function BlogPost({ params }: Props) {
         </div>
       )}
       <div>
-        {/* <PortableText value={post.body} components={components} /> */}
+        <PortableText value={post.body} components={components} />
       </div>
     </div>
   )
