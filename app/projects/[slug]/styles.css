@@ -3,3 +3,11 @@ a {
     text-decoration: underline;
     color: blue;
 } */
+
+iframe.body {
+    background-color: aquamarine;
+}
+
+.vp-center {
+    background-color: aqua;
+}

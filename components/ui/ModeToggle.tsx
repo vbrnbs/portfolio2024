@@ -8,8 +8,8 @@ import { useEffect } from "react";
 
 
  export function ModeToggle() {
-  const { setTheme } = useTheme();
-  const { theme } = useTheme();
+  const { theme, setTheme } = useTheme();
+  // const { theme } = useTheme();
 
   useEffect(() => {
     setTheme("system");
