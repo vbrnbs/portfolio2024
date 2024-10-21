@@ -11,3 +11,7 @@ iframe.body {
 .vp-center {
     background-color: aqua;
 }
+
+iframe.body {
+    background: transparent !important;
+  }

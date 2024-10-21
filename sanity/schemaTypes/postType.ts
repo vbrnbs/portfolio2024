@@ -63,6 +63,7 @@ export const postType = defineType({
     defineField({
       name: 'body',
       type: 'blockContent',
+      description: 'vimeo:  ?transparent=0',
     }),
     defineField({
       name: 'author',

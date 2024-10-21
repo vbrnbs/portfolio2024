@@ -5,6 +5,8 @@ import Image from 'next/image'
 import { urlFor } from '@/sanity/lib/image'
 import './styles.css'
 import { SanityImageSource } from '@sanity/image-url/lib/types/types'
+import { CarouselDemo } from '@/components/Carousel'
+
 // import { useTheme } from "next-themes"
 
 
@@ -80,29 +82,38 @@ export default async function BlogPost({ params }: Props) {
 
         ></iframe>
       </div>
-      {post.images && post.images.length > 0 && (
+
+      {/* <ImageGallery items={images} /> */}
+      <div className="flex w-full justify-center">
+        <CarouselDemo images={post.images}/>
+      </div>
+      
+      
+
+
+      {/* {post.images && post.images.length > 0 && (
         // className="grid grid-cols-2 gap-4" className="aspect-auto relative"
         <div className='flex'>
           {post.images.map((image: ImageValue, index: number) => (
-            <div key={index} >
+
               <Image
                 src={urlFor(image.asset as SanityImageSource).url()}
                 alt={`${post.title} - Image ${index + 1}`}
+                key={index}
                 // fill
                 width={600}
                 height={600}
                 // layout="fit"
                 // objectFit="cover"
               />
-            </div>
+
           ))}
         </div>
-      )}
+      )} */}
       <div>
         <PortableText value={post.body} components={components} />
       </div>
     </div>
   )
 }
-
 
