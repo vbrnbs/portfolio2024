@@ -1,6 +1,3 @@
-import * as React from "react"
-
-// import { Card, CardContent } from "@/components/ui/card"
 import {
   Carousel,
   CarouselContent,
@@ -13,7 +10,7 @@ import { SanityImageSource } from "@sanity/image-url/lib/types/types"
 import Image from "next/image"
 import { urlFor } from "@/sanity/lib/image"
 
-export function CarouselDemo(images : any) {
+export function CarouselDemo(images : {images: ImageValue[]}) {
   return (
     <Carousel className="w-full max-w-4xl">
       <CarouselContent>
