@@ -4,7 +4,7 @@ import { PortableText, PortableTextComponents } from '@portabletext/react'
 import Image from 'next/image'
 import { urlFor } from '@/sanity/lib/image'
 import './styles.css'
-import { SanityImageSource } from '@sanity/image-url/lib/types/types'
+// import { SanityImageSource } from '@sanity/image-url/lib/types/types'
 import { CarouselDemo } from '@/components/Carousel'
 
 // import { useTheme } from "next-themes"
